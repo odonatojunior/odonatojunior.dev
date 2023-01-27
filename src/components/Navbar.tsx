@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 export default function Navbar() {
   const [active, setActive] = useState(false)
   const { asPath } = useRouter()
-  console.log(active)
   const links = [
     {
       path: '/',

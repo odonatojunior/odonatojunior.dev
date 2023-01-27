@@ -18,7 +18,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
-    "remark": "^14.0.2",
+    "showdown": "^2.1.0",
     "typescript": "4.9.4"
   },
   "devDependencies": {
@@ -26,6 +26,8 @@
     "@commitlint/config-conventional": "^17.4.2",
     "@next/eslint-plugin-next": "^13.1.5",
     "@svgr/webpack": "^6.5.1",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/showdown": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "autoprefixer": "^10.4.13",

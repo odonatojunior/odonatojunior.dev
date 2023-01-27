@@ -1,9 +1,18 @@
 import Card from '@/components/Card'
 import CardContainer from '@/components/CardContainer'
+import { getAllPosts } from '@/lib/posts'
+import { Post } from '@/types/Post'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Home() {
+type HomepageProps = {
+  posts: Post[]
+}
+
+export default function Home({
+  posts
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -25,11 +34,25 @@ export default function Home() {
           </Link>
         </div>
         <CardContainer>
-          <Card title='Criando um blog com Nuxt, NuxtContent e GitHub Pages' />
-          <Card title='Como fazer miojo rápido em apenas 10 minutos + 2h de espera' />
-          <Card title='Automação aplicada a ambientes de testes front-end' />
+          {posts.map((post, index) => (
+            <Card
+              key={index}
+              title={post.data.title}
+              tags={post.data.tags}
+              slug={post.slug}
+            />
+          ))}
         </CardContainer>
       </section>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps<HomepageProps> = () => {
+  const posts = getAllPosts()
+  return {
+    props: {
+      posts
+    }
+  }
 }
