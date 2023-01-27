@@ -29,6 +29,13 @@ export const getServerSideProps: GetStaticProps<BlogPageProps> = (
 ) => {
   // TODO: fix this thing, I was tired
   const post = getPostBySlug(`${context.params?.slug}.md`)
+  if (!post) {
+    return {
+      redirect: {
+        destination: '/404'
+      }
+    }
+  }
   return {
     props: {
       post
