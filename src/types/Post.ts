@@ -7,6 +7,6 @@ export type Post = {
 export type PostMetadata = {
   title: string
   tags: string[]
-  date?: Date
+  date: Date
   description: string
 }
