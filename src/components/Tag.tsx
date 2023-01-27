@@ -4,7 +4,7 @@ type TagProps = {
 
 export default function Tag({ name }: TagProps) {
   return (
-    <div className='rounded-full bg-secondary py-1 px-2 text-xs text-white'>
+    <div className='inline-block rounded-full bg-secondary py-1 px-2 text-xs text-white'>
       {name}
     </div>
   )
