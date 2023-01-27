@@ -12,8 +12,9 @@ export function getAllPosts() {
   const posts = markdownFiles.map((slug) => getPostBySlug(slug))
   return posts
 }
-function getPostBySlug(slug: string): Post {
-  const formattedSlug = slug.replace(/\.md$/, '')
+
+export function getPostBySlug(slug: string): Post {
+  const formattedSlug = sanitizePostFileName(slug)
   const post = readFileSync(resolve(BLOG_POSTS_FOLDER, slug)).toString()
   const file = matter(post)
   // TODO: fix this ugly type casting
@@ -22,4 +23,8 @@ function getPostBySlug(slug: string): Post {
     content: file.content,
     slug: `blog/${formattedSlug}`
   }
+}
+
+function sanitizePostFileName(filename: string) {
+  return filename.replace(/\.md$/, '')
 }
