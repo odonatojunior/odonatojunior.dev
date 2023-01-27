@@ -1,59 +1,37 @@
 import Tag from '@/components/Tag'
+import markdownCompiler from '@/lib/markdown'
 
-export default function BlogPost() {
+type BlogPostProps = {
+  title: string
+  tags: string[]
+  date: Date
+  content: string
+}
+
+export default function BlogPost({
+  content,
+  date,
+  tags,
+  title
+}: BlogPostProps) {
   return (
     <>
       <article className='relative z-20'>
         <header className='py-8 '>
           <h2 className='mb-2 text-3xl font-bold leading-tight text-white'>
-            O LinkedIn é uma bosta e posso te provar o porquê
+            {title}
           </h2>
-          <h3 className='mb-4 uppercase tracking-widest text-gray-400 '>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Laudantium, reiciendis!
-          </h3>
           <div className='flex gap-2'>
-            <Tag name='NextJS' />
+            {tags.map((tag) => (
+              <Tag key={tag} name={tag} />
+            ))}
           </div>
-          <p className='mt-4 text-gray-500'>12/12/2022</p>
+          <p className='mt-4 text-gray-500'>{date.toString()}</p>
         </header>
-        <div>
-          <p className='leading-relaxed text-gray-400'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper
-            consectetur amet egestas amet eleifend suspendisse convallis massa.
-            Ac consequat volutpat quis vitae amet quam quis volutpat, dolor.
-            Dignissim morbi quisque purus sed praesent dolor convallis. Sed
-            consequat nunc, purus vitae.
-          </p>
-          <h4 className='mt-4 mb-2 text-lg font-bold text-white'>Subtítulo</h4>
-          <p className='leading-relaxed text-gray-400'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper
-            consectetur amet egestas amet eleifend suspendisse convallis massa.
-            Ac consequat volutpat quis vitae amet quam quis volutpat, dolor.
-            Dignissim morbi quisque purus sed praesent dolor convallis. Sed
-            consequat nunc, purus vitae.
-          </p>
-          <h4 className='mt-4 mb-2 text-lg font-bold text-white'>Subtítulo</h4>
-          <p className='leading-relaxed text-gray-400'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper
-            consectetur amet egestas amet eleifend suspendisse convallis massa.
-            Ac consequat volutpat quis vitae amet quam quis volutpat, dolor.
-            Dignissim morbi quisque purus sed praesent dolor convallis. Sed
-            consequat nunc, purus vitae.
-          </p>
-          <h4 className='mt-4 mb-2 text-lg font-bold text-white'>Subtítulo</h4>
-          <p className='leading-relaxed text-gray-400'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper
-            consectetur amet egestas amet eleifend suspendisse convallis massa.
-            Ac consequat volutpat quis vitae amet quam quis volutpat, dolor.
-            Dignissim morbi quisque purus sed praesent dolor convallis. Sed
-            consequat nunc, purus vitae.
-          </p>
-          <blockquote className=' my-4 border-l-4 border-l-primary p-4 italic tracking-wide text-white'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-            enim?
-          </blockquote>
-        </div>
+        <div
+          className='prose w-full max-w-none text-white prose-headings:mt-0 prose-headings:mb-2 prose-headings:text-2xl prose-headings:text-white prose-p:mt-0 prose-p:mb-8 prose-p:text-gray-400 prose-blockquote:text-2xl '
+          dangerouslySetInnerHTML={{ __html: markdownCompiler(content) }}
+        ></div>
       </article>
     </>
   )
