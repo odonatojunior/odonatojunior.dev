@@ -1,5 +1,5 @@
 import { Post, PostMetadata } from '@/types/Post'
-import { readdirSync, readFileSync } from 'fs'
+import { readdirSync, readFileSync, existsSync } from 'fs'
 import matter from 'gray-matter'
 import { resolve } from 'path'
 
@@ -13,9 +13,12 @@ export function getAllPosts() {
   return posts
 }
 
-export function getPostBySlug(slug: string): Post {
+export function getPostBySlug(slug: string): Post | undefined {
   const formattedSlug = sanitizePostFileName(slug)
-  const post = readFileSync(resolve(BLOG_POSTS_FOLDER, slug)).toString()
+  if (!existsSync(resolve(BLOG_POSTS_FOLDER, slug))) {
+    return
+  }
+  const post = readFileSync(resolve(BLOG_POSTS_FOLDER, slug), 'utf-8')
   const file = matter(post)
   // TODO: fix this ugly type casting
   return {
