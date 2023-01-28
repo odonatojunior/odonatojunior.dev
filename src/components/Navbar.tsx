@@ -30,7 +30,7 @@ export default function Navbar() {
   ]
   return (
     <nav className='fixed top-0 z-50 w-full border-b border-b-white/5 text-white backdrop-blur'>
-      <div className='container z-20 mx-auto flex max-w-4xl items-center justify-between px-6 py-3'>
+      <div className='container z-20 mx-auto flex max-w-2xl items-center justify-between px-6 py-3'>
         <h2 className='select-none'>~{asPath}</h2>
         <div className='flex items-center justify-center gap-2'>
           <button
@@ -47,7 +47,7 @@ export default function Navbar() {
       </div>
       <hr className='border-white/5' />
       <div
-        className={`container mx-auto h-screen max-w-4xl bg-black/75 px-6 py-4
+        className={`container mx-auto h-screen max-w-2xl bg-black/75 px-6 py-4
         ${!active && 'hidden'}`}
       >
         <ul className='flex flex-col gap-2'>

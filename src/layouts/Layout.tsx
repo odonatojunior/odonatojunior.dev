@@ -13,7 +13,7 @@ export default function Layout({
   return (
     <main className={`min-h-screen overflow-hidden bg-black ${className}`}>
       <Navbar />
-      <section className='container z-20 mx-auto max-w-4xl px-6 pt-12'>
+      <section className='container z-20 mx-auto mt-16 max-w-2xl px-6'>
         {children}
       </section>
       <Footer />
