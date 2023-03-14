@@ -12,7 +12,7 @@ export default function Card({ title, tags, slug }: CardProps) {
   return (
     <Link
       href={slug || '#'}
-      className='z-20 flex items-end justify-between gap-2 rounded-md bg-white/10 p-4 backdrop-blur-md transition hover:scale-105 hover:bg-white/25 active:bg-white/20'
+      className='z-20 flex items-end justify-between gap-2 rounded-md bg-white/10 p-4 backdrop-blur-md transition hover:scale-[1.02] hover:bg-white/25 active:scale-100 active:bg-white/20'
     >
       <div className='flex flex-col items-start gap-2 '>
         <div className='flex flex-wrap gap-1'>
