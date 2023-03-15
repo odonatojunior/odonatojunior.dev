@@ -5,6 +5,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { FiBriefcase, FiMapPin, FiBook } from 'react-icons/fi'
 import Image from 'next/image'
 import SEO from '@/components/SEO'
+import Content from '@/components/Content'
 
 type AboutPageProps = {
   data: AboutPage
@@ -52,10 +53,7 @@ export default function About({
             </span>
           </div>
         </div>
-        <div
-          className='prose w-full max-w-none text-white prose-headings:mt-0 prose-headings:mb-2 prose-headings:text-2xl prose-headings:text-white prose-p:mt-0 prose-p:mb-8 prose-p:text-gray-400 prose-a:text-gray-300 prose-blockquote:text-2xl prose-strong:text-gray-300 prose-li:text-gray-400'
-          dangerouslySetInnerHTML={{ __html: markdownCompiler(content) }}
-        ></div>
+        <Content content={content} />
       </div>
     </>
   )

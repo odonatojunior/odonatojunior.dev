@@ -1,5 +1,5 @@
+import Content from '@/components/Content'
 import Tag from '@/components/Tag'
-import markdownCompiler from '@/lib/markdown'
 
 type BlogPostProps = {
   title: string
@@ -28,10 +28,7 @@ export default function BlogPost({
           </div>
           <p className='mt-4 text-gray-500'>Criado em {date.toString()}</p>
         </header>
-        <div
-          className='prose w-full max-w-none prose-headings:mt-0 prose-headings:mb-2 prose-headings:text-2xl prose-headings:text-white prose-p:mt-0 prose-p:mb-8 prose-p:text-gray-400 prose-blockquote:text-2xl'
-          dangerouslySetInnerHTML={{ __html: markdownCompiler(content) }}
-        ></div>
+        <Content content={content} />
       </article>
     </>
   )
