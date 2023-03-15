@@ -31,7 +31,7 @@ export default function Navbar() {
     // }
   ]
   return (
-    <nav className='fixed top-0 z-50 w-full border-b border-b-white/5 text-white backdrop-blur'>
+    <nav className='fixed top-0 z-50 w-full border-b border-b-white/25 text-white backdrop-blur'>
       <div className='container z-20 mx-auto flex max-w-2xl items-center justify-between px-6 py-3'>
         <h2 className='select-none'>~{asPath}</h2>
         <ul className='hidden gap-2 p-2 sm:flex'>
