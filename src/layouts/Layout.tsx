@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/Nav/Navbar'
 import Gradient from '@/components/textures/gradient.svg'
 
 type LayoutProps = {

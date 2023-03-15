@@ -1,13 +1,12 @@
-import Card from '@/components/Card'
-import CardContainer from '@/components/CardContainer'
-import { getAllPosts } from '@/lib/posts'
+import Card from '@/components/Card/Card'
+import CardContainer from '@/components/Card/CardContainer'
+import { getAllBlogPostsStaticProps } from '@/lib/posts'
 import { Post } from '@/types/Post'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
 import Link from 'next/link'
 
 type HomepageProps = {
-  posts: Post[]
+  posts?: Post[]
 }
 
 export default function Home({
@@ -15,9 +14,6 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Head>
-        <title>Donato Jr.</title>
-      </Head>
       <header className='relative z-10 py-8'>
         <h1 className='mb-1 text-center text-3xl font-bold tracking-tight text-white'>
           Donato Jr.
@@ -34,13 +30,8 @@ export default function Home({
           </Link>
         </div>
         <CardContainer>
-          {posts.map((post, index) => (
-            <Card
-              key={index}
-              title={post.data.title}
-              tags={post.data.tags}
-              slug={post.slug}
-            />
+          {posts?.map(({ data, slug }, index) => (
+            <Card key={index} title={data.title} tags={data.tags} slug={slug} />
           ))}
         </CardContainer>
       </section>
@@ -48,11 +39,5 @@ export default function Home({
   )
 }
 
-export const getStaticProps: GetStaticProps<HomepageProps> = () => {
-  const posts = getAllPosts()
-  return {
-    props: {
-      posts
-    }
-  }
-}
+export const getStaticProps: GetStaticProps<HomepageProps> = () =>
+  getAllBlogPostsStaticProps()
