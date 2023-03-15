@@ -11,21 +11,21 @@ export default function Footer() {
         <Link
           href={`https://instagram.com/${SOCIAL_MEDIA_USER}`}
           target='_blank'
-          className='rounded-full p-3 hover:bg-white/10'
+          className='rounded-full p-3 hover:bg-white/10 active:scale-90'
         >
           <GrInstagram className='h-5 w-5 fill-white' />
         </Link>
         <Link
           href={`https://twitter.com/${SOCIAL_MEDIA_USER}`}
           target='_blank'
-          className='rounded-full p-3 hover:bg-white/10'
+          className='rounded-full p-3 hover:bg-white/10 active:scale-90'
         >
           <GrTwitter className='h-5 w-5 fill-white' />
         </Link>
         <Link
           href={`https://github.com/${SOCIAL_MEDIA_USER}`}
           target='_blank'
-          className='rounded-full p-3 hover:bg-white/10'
+          className='rounded-full p-3 hover:bg-white/10 active:scale-90'
         >
           <GrGithub className='h-5 w-5 fill-white' />
         </Link>
