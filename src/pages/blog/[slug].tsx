@@ -1,3 +1,4 @@
+import SEO from '@/components/SEO'
 import BlogPost from '@/layouts/BlogPost'
 import {
   getBlogPostsStaticPaths,
@@ -19,12 +20,20 @@ export default function BlogPage({
   post
 }: InferGetServerSidePropsType<typeof getStaticProps>) {
   return (
-    <BlogPost
-      title={post.data.title}
-      tags={post.data.tags}
-      content={post.content}
-      date={post.data.date}
-    />
+    <>
+      <SEO
+        title={`Blog | ${post.data.title}`}
+        description={post.data.description}
+        canonical='https://odonatojunior.dev'
+        slug={post.slug}
+      />
+      <BlogPost
+        title={post.data.title}
+        tags={post.data.tags}
+        content={post.content}
+        date={post.data.date}
+      />
+    </>
   )
 }
 

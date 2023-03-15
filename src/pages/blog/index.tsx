@@ -1,4 +1,6 @@
-import Card from '@/components/Card'
+import Card from '@/components/Card/Card'
+import CardContainer from '@/components/Card/CardContainer'
+import SEO from '@/components/SEO'
 import { getAllBlogPostsStaticProps } from '@/lib/posts'
 import { Post } from '@/types/Post'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
@@ -12,19 +14,20 @@ export default function Blog({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
+      <SEO
+        title='Blog'
+        description='Eu escrevo algumas coisas aqui'
+        canonical='https://odonatojunior.dev'
+        slug='/blog'
+      />
       <div className='mb-4 flex items-end justify-between pt-8'>
         <h3 className='text-xl font-semibold text-white'>Todos os posts</h3>
       </div>
-      <article className='flex flex-col gap-2'>
-        {posts?.map((post, index) => (
-          <Card
-            slug={post.slug}
-            title={post.data.title}
-            key={index}
-            tags={post.data.tags}
-          />
+      <CardContainer>
+        {posts?.map(({ slug, data }, index) => (
+          <Card key={index} slug={slug} title={data.title} tags={data.tags} />
         ))}
-      </article>
+      </CardContainer>
     </>
   )
 }
